@@ -30,7 +30,7 @@ if(getParameterByName('img')){
   var img=  getParameterByName('img');
 }
 if(!getParameterByName('img') || getParameterByName('imb')){
-  var img= atob(getParameterByName);
+  var img= atob(getParameterByName('img'));
 } 
 // Direct Video src(v for direct & i for base64 encoded)
 var video = getParameterByName('v') ;
@@ -39,9 +39,6 @@ if(getParameterByName('i')){
 }
 // Main Video Html Code
 to_print = "<video controls id='video' src="+video+"></video>";
-if(getParameterByName('yt') == "true"){
-  to_print = "<b>Hello!</b>";
-}
 document.write(to_print);
 // getParameterByName Function Defined
 function getParameterByName(name, url = window.location.href) {
