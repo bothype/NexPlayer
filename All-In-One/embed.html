@@ -24,14 +24,46 @@ video{
 </style>
 <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
 <script>
+// All Extra Features & Customisation Defined
+// Primary Color(Default-false)
+var clr= "false";
+if(getParameterByName('c')){
+  var clr=  getParameterByName('c');
+}
+// AutoPlay(default-false)
+var autop= "false";
+if(getParameterByName('autoplay')){
+  var autop=  getParameterByName('autoplay');
+}
+// Mute(default-false)
+var mut= "false";
+if(getParameterByName('mute')){
+  var mut=  getParameterByName('mute');
+}
+// Download Button(default-false)
+var dl= "false";
+if(getParameterByName('dl')){
+  var dl=  getParameterByName('dl');
+}
+// Title(default-false)
+var ttl= "false";
+if(getParameterByName('title')){
+  var ttl=  getParameterByName('title');
+}
+// Loop(Default-false)
+var lp= "false";
+if(getParameterByName('loop')){
+  var lp=  getParameterByName('loop');
+}
 // Poster Image(Default-Blank)
-var img="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Fully_transparent_placeholder.svg/800px-Fully_transparent_placeholder.svg.png";
+var img= "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Fully_transparent_placeholder.svg/800px-Fully_transparent_placeholder.svg.png";
 if(getParameterByName('img')){
   var img=  getParameterByName('img');
 }
 if(!getParameterByName('img') || getParameterByName('imb')){
   var img= atob(getParameterByName('img'));
-} 
+}
+// All Video src Defined
 // Direct Video src(v for direct & i for base64 encoded)
 var video = getParameterByName('v') ;
 if(getParameterByName('i')){
@@ -55,22 +87,22 @@ var player = fluidPlayer(
    'video',
     {
     layoutControls: {
-      primaryColor: false,
+      primaryColor: clr,
       playButtonShowing: true,
       playPauseAnimation: true,
       fillToContainer: false,
-      autoPlay: false,
+      autoPlay: autop,
       preload: false,
-      mute: false,
+      mute: mut,
       doubleclickFullscreen: false,
       subtitlesEnabled: false,
       keyboardControl: true,
       layout: 'default',
-      allowDownload: false,
+      allowDownload: dl,
       playbackRateEnabled: false,
       allowTheatre: false,
-      title:  false,
-      loop: false,
+      title:  ttl,
+      loop: lp,
       posterImage: img,
       logo: {
           imageUrl: null,
