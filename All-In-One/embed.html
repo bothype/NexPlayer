@@ -1,1 +1,115 @@
-Hello
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexPlayer</title>
+</head>
+<body>
+<style>
+body{
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+video{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.embed{
+  position: absolute;
+  background: none;
+  top: 2px;
+  z-index: 999;
+  color: aqua;
+  font-family: sans-serif;
+  font-size: 18px;
+  border: 0;
+  font-weight: 600;
+  right: 10px;
+}
+</style>
+<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+<script>
+var img="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Fully_transparent_placeholder.svg/800px-Fully_transparent_placeholder.svg.png";
+if(getParameterByName('img')){
+  var img=  getParameterByName('img');
+}
+if(!getParameterByName('id') || getParameterByName('ib')){
+} 
+var video = getParameterByName('id') ;
+if(getParameterByName('ib')){
+  var video = atob(getParameterByName('ib'));
+}
+to_print = "<video controls id='video' src="+video+"></video>";
+if(getParameterByName('yt') === "true"){
+  to_print = "<video controls id='video' class='yt-vid' yt-scr="+video+"></video>";
+}
+document.write(to_print);
+function getembed(){
+  
+}
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+</script>
+<script>
+var player = fluidPlayer(
+   'video',
+    {
+    layoutControls: {
+      primaryColor: false,
+      playButtonShowing: true,
+      playPauseAnimation: true,
+      fillToContainer: false,
+      autoPlay: false,
+      preload: false,
+      mute: false,
+      doubleclickFullscreen: false,
+      subtitlesEnabled: false,
+      keyboardControl: true,
+      layout: 'default',
+      allowDownload: false,
+      playbackRateEnabled: false,
+      allowTheatre: false,
+      title:  false,
+      loop: false,
+      posterImage: img,
+      logo: {
+          imageUrl: null,
+          position: 'top right',
+          clickUrl: null,
+          opacity: 1,
+          imageMargin: '10px'
+            },
+      controlBar: {
+          autoHide: true,
+          autoHideTimeout: 3,
+          animated: true
+            },
+      controlForwardBackward: {
+          show: true,
+            },
+      timelinePreview:        {},
+      htmlOnPauseBlock: {
+          html: null,
+          height: null,
+          width: null
+            },
+  playerInitCallback:     (function() {})
+        }
+    }
+);
+</script>
+</body>
+</html>
