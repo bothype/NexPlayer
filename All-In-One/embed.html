@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
 <title>NexPlayer</title>
 </head>
 <body>
@@ -21,39 +22,29 @@ video{
   height: 100%;
   position: absolute;
 }
-.embed{
-  position: absolute;
-  background: none;
-  top: 2px;
-  z-index: 999;
-  color: aqua;
-  font-family: sans-serif;
-  font-size: 18px;
-  border: 0;
-  font-weight: 600;
-  right: 10px;
-}
 </style>
 <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
 <script>
+// Poster Image(Default-Blank)
 var img="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Fully_transparent_placeholder.svg/800px-Fully_transparent_placeholder.svg.png";
 if(getParameterByName('img')){
   var img=  getParameterByName('img');
 }
-if(!getParameterByName('id') || getParameterByName('ib')){
+if(!getParameterByName('img') || getParameterByName('imb')){
+  var img= atob(getParameterByName);
 } 
-var video = getParameterByName('id') ;
-if(getParameterByName('ib')){
-  var video = atob(getParameterByName('ib'));
+// Direct Video src(v for direct & i for base64 encoded)
+var video = getParameterByName('v') ;
+if(getParameterByName('i')){
+  var video = atob(getParameterByName('i'));
 }
+// Main Video Html Code
 to_print = "<video controls id='video' src="+video+"></video>";
 if(getParameterByName('yt') === "true"){
-  to_print = "<video controls id='video' class='yt-vid' yt-scr="+video+"></video>";
+  to_print = "<b>Hello!</b>";
 }
 document.write(to_print);
-function getembed(){
-  
-}
+// getParameterByName Function Defined
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
