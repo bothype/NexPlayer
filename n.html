@@ -50,19 +50,17 @@ No Title
 <small id="ln" class="text-muted">N/A</span>
 <br><hr><br>
 <div class="d-grid gap-2">
-<button id="dl" type="button" class="btn btn-outline-primary" oclick="download()"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
+<button id="dl" type="button" class="btn btn-outline-primary" onclick="download()"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
 </div>
 </div>
 </main>
 <script>
-if(getParameterByName("v")){
   var vidurl = getParameterByName("v");
   var ttl = decodeURI(getParameterByName("t"));
   var ln = getParameterByName("l");
-  document.getElementbyId("vid").src = "https://ninjastream.to/watch/" + vidurl;
-  documemt.getElementsbyTagName("title")[0].innerHTML = ttl + " - NexPlayer";
-  document.getElementbyId("ln").innerHTML = ln;
-}
+  document.getElementById("vid").src = "https://ninjastream.to/watch/" + vidurl;
+  documemt.getElementsByTagName("title")[0].innerHTML = ttl + " - NexPlayer";
+  document.getElementById("ln").innerHTML = ln;
 function download(){
   location.href = "https://ninjastream.to/download/" + vidurl;
 }
