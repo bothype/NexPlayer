@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexPlayer</title>
+<title id="pg-title">NexPlayer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -44,10 +44,10 @@ body{
 </iframe>
 </div>
 <div style="margin:10px;">
-<h2 class="accordion-header" id="title-con">
+<h2 class="accordion-header" id="title">
 No Title
 </h2>
-<small id="ln" class="text-muted">N/A</span>
+<small id="lng" class="text-muted">N/A</span>
 <br><hr><br>
 <div class="d-grid gap-2">
 <button id="dl" type="button" class="btn btn-outline-primary" onclick="download()"><i class="fa-solid fa-download"></i>&nbsp;Download</button>
@@ -59,8 +59,9 @@ No Title
   var ttl = decodeURI(getParameterByName("t"));
   var ln = getParameterByName("l");
   document.getElementById("vid").src = "https://ninjastream.to/watch/" + vidurl;
-  documemt.getElementsByTagName("title")[0].innerHTML = ttl + " - NexPlayer";
-  document.getElementById("ln").innerHTML = ln;
+  document.getElementById("title").innerHTML = ttl;
+  documemt.getElementsById("pg-title").innerHTML = ttl + " - NexPlayer";
+  document.getElementById("lng").innerHTML = ln;
 function download(){
   location.href = "https://ninjastream.to/download/" + vidurl;
 }
